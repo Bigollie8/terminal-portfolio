@@ -173,7 +173,7 @@ describe('Commands', () => {
     });
 
     it('should show error for invalid theme', async () => {
-      (context.setTheme as any).mockReturnValue(false);
+      (context.setTheme as ReturnType<typeof vi.fn>).mockReturnValue(false);
       const result = await themeCommand.execute(['invalid'], context);
 
       expect(result.lines.some((l) => l.type === 'error')).toBe(true);

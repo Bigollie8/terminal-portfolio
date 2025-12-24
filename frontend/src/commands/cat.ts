@@ -115,7 +115,7 @@ export const catCommand: Command = {
         lines.push(output(''));
 
         return { lines };
-      } catch (err) {
+      } catch {
         lines.push(error('Failed to fetch service status'));
         lines.push(output("Try visiting https://status.basedsecurity.net directly."));
         return { lines };

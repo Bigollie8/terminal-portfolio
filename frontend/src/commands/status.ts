@@ -169,7 +169,7 @@ export const statusCommand: Command = {
         timestamp: Date.now(),
       });
 
-      for (const [_key, service] of Object.entries(services)) {
+      for (const service of Object.values(services)) {
         const commitDisplay = service.commit ? ` (${service.commit.substring(0, 7)})` : '';
         const deployDate = service.deployedAt.split('T')[0];
         lines.push({
