@@ -1,0 +1,254 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+}
+
+.modal {
+  background: #1a1a1a;
+  border: 2px solid #00ff00;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 700px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 0 30px rgba(0, 255, 0, 0.3);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #333;
+}
+
+.title {
+  margin: 0;
+  color: #00ff00;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px 8px;
+  line-height: 1;
+}
+
+.closeBtn:hover {
+  color: #ff5555;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  padding: 20px;
+}
+
+@media (max-width: 600px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.nameRow {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.nameLabel {
+  color: #888;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.nameInput {
+  background: #0d0d0d;
+  border: 1px solid #333;
+  border-radius: 4px;
+  color: #fff;
+  padding: 10px 12px;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.nameInput:focus {
+  outline: none;
+  border-color: #00ff00;
+}
+
+.colorSection {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sectionTitle {
+  color: #00ff00;
+  font-size: 14px;
+  margin: 0 0 8px 0;
+  font-weight: 500;
+}
+
+.colorRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.colorLabel {
+  color: #ccc;
+  font-size: 13px;
+  width: 80px;
+  flex-shrink: 0;
+}
+
+.colorInputWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.colorPicker {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 2px solid #333;
+  border-radius: 4px;
+  cursor: pointer;
+  background: none;
+}
+
+.colorPicker::-webkit-color-swatch-wrapper {
+  padding: 2px;
+}
+
+.colorPicker::-webkit-color-swatch {
+  border-radius: 2px;
+  border: none;
+}
+
+.colorText {
+  background: #0d0d0d;
+  border: 1px solid #333;
+  border-radius: 4px;
+  color: #fff;
+  padding: 8px 10px;
+  font-family: inherit;
+  font-size: 13px;
+  width: 90px;
+}
+
+.colorText:focus {
+  outline: none;
+  border-color: #00ff00;
+}
+
+.error {
+  color: #ff5555;
+  font-size: 13px;
+  padding: 8px;
+  background: rgba(255, 85, 85, 0.1);
+  border-radius: 4px;
+  border: 1px solid rgba(255, 85, 85, 0.3);
+}
+
+.preview {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.previewTerminal {
+  background: var(--preview-bg, #0d0d0d);
+  border: 1px solid #333;
+  border-radius: 4px;
+  padding: 16px;
+  min-height: 180px;
+}
+
+.previewLine {
+  line-height: 1.6;
+  font-size: 13px;
+}
+
+.previewPrompt {
+  color: var(--preview-prompt, #00ff00);
+}
+
+.previewText {
+  color: var(--preview-text, #00ff00);
+}
+
+.previewError {
+  color: var(--preview-error, #ff5555);
+}
+
+.previewLink {
+  color: var(--preview-link, #00d4ff);
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 16px 20px;
+  border-top: 1px solid #333;
+}
+
+.cancelBtn {
+  background: transparent;
+  border: 1px solid #555;
+  color: #888;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cancelBtn:hover {
+  border-color: #888;
+  color: #ccc;
+}
+
+.createBtn {
+  background: #00ff00;
+  border: none;
+  color: #0d0d0d;
+  padding: 10px 24px;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.createBtn:hover {
+  background: #00cc00;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.4);
+}

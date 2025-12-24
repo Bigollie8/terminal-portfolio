@@ -1,0 +1,33 @@
+.prompt {
+  display: inline;
+  white-space: nowrap;
+  color: var(--terminal-prompt);
+  font-weight: bold;
+}
+
+.user {
+  color: var(--terminal-prompt);
+}
+
+.separator {
+  color: var(--terminal-text);
+  opacity: 0.7;
+}
+
+.host {
+  color: var(--terminal-prompt);
+}
+
+.colon {
+  color: var(--terminal-text);
+  opacity: 0.7;
+}
+
+.path {
+  color: var(--terminal-link);
+}
+
+.dollar {
+  color: var(--terminal-prompt);
+  margin-left: 0;
+}

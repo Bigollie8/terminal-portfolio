@@ -1,0 +1,310 @@
+/* Terminal Container */
+.terminal {
+  position: relative;
+  background: var(--terminal-bg);
+  color: var(--terminal-text);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.5;
+  min-height: 100vh;
+  overflow: hidden;
+  cursor: text;
+}
+
+/* CRT Scanline Effect */
+.scanlines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    transparent 50%,
+    rgba(0, 0, 0, 0.05) 50%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* Add subtle flicker effect */
+.scanlines::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    rgba(0, 0, 0, 0.15) 100%
+  );
+  pointer-events: none;
+}
+
+/* Terminal Content */
+.content {
+  position: relative;
+  padding: 1rem;
+  min-height: 100vh;
+  overflow-y: auto;
+  z-index: 1;
+}
+
+/* Output Container */
+.output {
+  margin-bottom: 0.5rem;
+}
+
+/* Single Line */
+.line {
+  min-height: 1.5em;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.lineContent {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Line Types */
+.lineInput {
+  color: var(--terminal-text);
+  opacity: 0.8;
+}
+
+.lineOutput {
+  color: var(--terminal-text);
+}
+
+.lineError {
+  color: var(--terminal-error);
+}
+
+.lineSystem {
+  color: var(--terminal-prompt);
+  font-style: italic;
+}
+
+/* Inline Colors for Games */
+.colorCyan {
+  color: #00ffff;
+  text-shadow: 0 0 5px #00ffff;
+}
+
+.colorOrange {
+  color: #ff8800;
+  text-shadow: 0 0 5px #ff8800;
+}
+
+.colorGreen {
+  color: #00ff00;
+  text-shadow: 0 0 5px #00ff00;
+}
+
+.colorPurple {
+  color: #ff00ff;
+  text-shadow: 0 0 5px #ff00ff;
+}
+
+.colorRed {
+  color: #ff4444;
+  text-shadow: 0 0 5px #ff4444;
+}
+
+.colorYellow {
+  color: #ffff00;
+  text-shadow: 0 0 5px #ffff00;
+}
+
+/* Input Line */
+.inputLine {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  min-height: 1.5em;
+}
+
+.inputWrapper {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+/* Hidden actual input */
+.input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: transparent;
+  font: inherit;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  caret-color: transparent;
+  z-index: 2;
+  box-shadow: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.input:focus,
+.input:focus-visible {
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
+/* Visible input display with cursor */
+.inputDisplay {
+  display: inline;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  color: var(--terminal-text);
+}
+
+/* Blinking Cursor */
+.cursor {
+  display: inline-block;
+  background: var(--terminal-text);
+  animation: blink 1s step-end infinite;
+}
+
+.cursorHidden {
+  opacity: 0;
+  animation: none;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Text Selection */
+::selection {
+  background: var(--terminal-selection);
+}
+
+::-moz-selection {
+  background: var(--terminal-selection);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .terminal {
+    font-size: 13px;
+  }
+
+  .content {
+    padding: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .terminal {
+    font-size: 12px;
+  }
+
+  .content {
+    padding: 0.5rem;
+  }
+}
+
+/* Disable text selection flicker on mobile */
+@media (hover: none) {
+  .terminal {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Autocomplete Suggestions */
+.inputContainer {
+  position: relative;
+}
+
+.suggestions {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  max-width: 400px;
+  background: var(--terminal-bg);
+  border: 1px solid var(--terminal-border, var(--terminal-prompt));
+  border-radius: 4px;
+  margin-bottom: 4px;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 100;
+  overflow: hidden;
+}
+
+.suggestionItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: background 0.1s ease;
+}
+
+.suggestionItem:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.suggestionItemSelected {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.suggestionValue {
+  color: var(--terminal-text);
+  font-family: var(--font-mono);
+}
+
+.suggestionType {
+  font-size: 0.75em;
+  padding: 2px 6px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.suggestionTypecommand {
+  color: var(--terminal-prompt);
+  background: rgba(var(--terminal-prompt-rgb, 0, 255, 0), 0.1);
+}
+
+.suggestionTypeargument {
+  color: var(--terminal-link, #00ffff);
+  background: rgba(0, 255, 255, 0.1);
+}
+
+.suggestionTypeflag {
+  color: #ff8800;
+  background: rgba(255, 136, 0, 0.1);
+}
+
+.suggestionTypesubcommand {
+  color: #ff00ff;
+  background: rgba(255, 0, 255, 0.1);
+}
+
+.suggestionHint {
+  padding: 4px 12px;
+  font-size: 0.75em;
+  color: var(--terminal-text);
+  opacity: 0.5;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
