@@ -14,7 +14,7 @@ process.env.DATABASE_URL = TEST_DB_PATH;
 let originalDb: Database.Database | null = null;
 
 // Create test database schema
-function createTestDatabase() {
+function createTestDatabase(): Database.Database {
   // Ensure data directory exists
   const dataDir = path.dirname(TEST_DB_PATH);
   if (!fs.existsSync(dataDir)) {
